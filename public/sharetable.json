@@ -1427,6 +1427,19 @@
         "overallpluss": "-3.50%",
         "days": "20.00",
         "daysplus": "+0.50%"
+    },
+    {
+        "stockname": "ADANI",
+        "date": "2025-02-09",
+        "quantity": 55,
+        "avgprice": "190.50",
+        "ltp": "100.00",
+        "invamt": "100.50",
+        "mktval": "1000.00",
+        "overall": "20.50",
+        "overallpluss": "-3.50%",
+        "days": "20.00",
+        "daysplus": "+0.50%"
     }
 ]
 
