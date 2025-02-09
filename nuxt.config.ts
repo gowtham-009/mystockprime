@@ -1,20 +1,21 @@
-import * as path from "path";
+import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
-    modules: [ "@primevue/nuxt-module"],
-    css: ['@/assets/styles/tailwind.css', '@/assets/styles/base.css'],
+
+    modules: ['@primevue/nuxt-module'],
+    css: ['@/assets/styles/tailwind.css', 
+        '@/assets/styles/base.css'],
     primevue: {
         options: { 
-            theme: 'none',
-
-         
-         },
+            theme: 'none'
+            
+        },
     },
     postcss: {
         plugins: {
             'postcss-import': {},
-            tailwindcss: {},
-            autoprefixer: {}
+            'tailwindcss': {},
+            'autoprefixer': {}
         }
     }
 });

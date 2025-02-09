@@ -283,7 +283,7 @@
             dataKey="id"
             filterDisplay="menu"
             scrollable
-            scrollHeight="400px"
+          
             paginator
             :rows="rows" 
             tableStyle="min-width: 20rem"
@@ -341,92 +341,100 @@
                     <InputText v-model="filterModel.value" type="text" placeholder="Search by Stock name" />
                 </template>
             </Column>
-            <Column v-if="visibleColumns.includes('quantity')" field="quantity" sortable header="Quantity" :showFilterOperator="false" :showFilterMatchModes="false">
-                <template #body="{ data }">
-                    {{ data.quantity }}
-                </template>
-                <template #filter="{ filterModel }">
-                  <Slider v-model="filterValue" range class="w-56 mt-2" :min="8" :max="100" />
-                  <div class="w-full flex justify-between p-2 ">
-                    <span>{{ filterValue[0] }}</span>
-                    <span>{{ filterValue[1] }}</span>
-                  </div>
-                </template>
+            <Column 
+                v-if="visibleColumns.includes('quantity')" 
+                field="quantity" 
+                sortable 
+                header="Quantity" 
+                :showFilterOperator="false" 
+                :showFilterMatchModes="false"
+            >
+            <template #body="{ data }">
+              {{ data.quantity }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                        <Slider v-model="filterModel.value" range class="m-4"></Slider>
+                        <div class="flex items-center justify-between px-2">
+                            <span>{{ filterModel.value ? filterModel.value[0] : 0 }}</span>
+                            <span>{{ filterModel.value ? filterModel.value[1] : 100 }}</span>
+                        </div>
+                    </template>
             </Column>
             <Column v-if="visibleColumns.includes('avgprice')" field="avgprice" sortable header="Avgprice" :showFilterOperator="false" :showFilterMatchModes="false">
-                <template #body="{ data }">
-                    {{ data.avgprice }}
-                </template>
-                <template #filter="{ filterModel }">
-                  <Slider v-model="filterprice" range class="w-56 mt-2" :min="1" :max="1000" />
-                  <div class="w-full flex justify-between p-2 ">
-                    <span>{{ filterprice[0] }}</span>
-                    <span>{{ filterprice[1] }}</span>
-                  </div>
-                </template>
+              <template #body="{ data }">
+              {{ data.avgprice }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                        <Slider v-model="filterModel.value" range class="m-4" :min="1" :max="1000"></Slider>
+                        <div class="flex items-center justify-between px-2">
+                            <span>{{ filterModel.value ? filterModel.value[0] : 0 }}</span>
+                            <span>{{ filterModel.value ? filterModel.value[1] : 100 }}</span>
+                        </div>
+                    </template>
             </Column>
             <Column  v-if="visibleColumns.includes('ltp')" field="ltp" sortable header="LTP" :showFilterOperator="false" :showFilterMatchModes="false">
-                <template #body="{ data }">
-                    {{ data.ltp }}
-                </template>
-                <template  #filter="{ filterModel }">
-                  <Slider v-model="filterltp" range class="w-56 mt-2" :min="1" :max="1000" />
-                  <div class="w-full flex justify-between p-2 ">
-                    <span>{{ filterltp[0] }}</span>
-                    <span>{{ filterltp[1] }}</span>
-                  </div>
-                </template>
+              <template #body="{ data }">
+              {{ data.ltp }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                        <Slider v-model="filterModel.value" range class="m-4" :min="1" :max="1000"></Slider>
+                        <div class="flex items-center justify-between px-2">
+                            <span>{{ filterModel.value ? filterModel.value[0] : 0 }}</span>
+                            <span>{{ filterModel.value ? filterModel.value[1] : 100 }}</span>
+                        </div>
+                    </template>
             </Column>
             <Column v-if="visibleColumns.includes('invamt')" field="invamt" sortable header="Invamt" :showFilterOperator="false" :showFilterMatchModes="false">
-                <template #body="{ data }">
-                    {{ data.invamt }}
-                </template>
-                <template  #filter="{ filterModel }">
-                  <Slider v-model="filterinv" range class="w-56 mt-2" :min="1" :max="1000" />
-                  <div class="w-full flex justify-between p-2 ">
-                    <span>{{ filterinv[0] }}</span>
-                    <span>{{ filterinv[1] }}</span>
-                  </div>
-                </template>
+              <template #body="{ data }">
+              {{ data.invamt }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                        <Slider v-model="filterModel.value" range class="m-4" :min="1" :max="1000"></Slider>
+                        <div class="flex items-center justify-between px-2">
+                            <span>{{ filterModel.value ? filterModel.value[0] : 0 }}</span>
+                            <span>{{ filterModel.value ? filterModel.value[1] : 100 }}</span>
+                        </div>
+                    </template>
+                
             </Column>
             <Column v-if="visibleColumns.includes('mktval')" field="mktval" sortable header="Mktval" :showFilterOperator="false" :showFilterMatchModes="false">
-                <template #body="{ data }">
-                    {{ data.mktval }}
-                </template>
-                <template  #filter="{ filterModel }">
-                  <Slider v-model="filtermkt" range class="w-56 mt-2" :min="1000" :max="50000" />
-                  <div class="w-full flex justify-between p-2 ">
-                    <span>{{ filtermkt[0] }}</span>
-                    <span>{{ filtermkt[1] }}</span>
-                  </div>
-                </template>
+              <template #body="{ data }">
+              {{ data.mktval }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                        <Slider v-model="filterModel.value" range class="m-4" :min="1" :max="100000"></Slider>
+                        <div class="flex items-center justify-between px-2">
+                            <span>{{ filterModel.value ? filterModel.value[0] : 0 }}</span>
+                            <span>{{ filterModel.value ? filterModel.value[1] : 100 }}</span>
+                        </div>
+                    </template>
             </Column>
             <Column v-if="visibleColumns.includes('overall')" field="overall" sortable header="Overall" :showFilterOperator="false" :showFilterMatchModes="false">
-                <template #body="{ data }">
-                    {{ data.overall }}
-                </template>
-                <template  #filter="{ filterModel }">
-                  <Slider v-model="filteroverall" range class="w-56 mt-2" :min="1" :max="1000" />
-                  <div class="w-full flex justify-between p-2 ">
-                    <span>{{ filteroverall[0] }}</span>
-                    <span>{{ filteroverall[1] }}</span>
-                  </div>
-                </template>
+              <template #body="{ data }">
+              {{ data.overall }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                        <Slider v-model="filterModel.value" range class="m-4" :min="1" :max="1000"></Slider>
+                        <div class="flex items-center justify-between px-2">
+                            <span>{{ filterModel.value ? filterModel.value[0] : 0 }}</span>
+                            <span>{{ filterModel.value ? filterModel.value[1] : 100 }}</span>
+                        </div>
+                    </template>
             </Column>
             <Column v-if="visibleColumns.includes('days')" field="days" sortable header="Days" :showFilterOperator="false" :showFilterMatchModes="false">
-                <template #body="{ data }">
-                    {{ data.days }}
-                </template>
-                <template  #filter="{ filterModel }">
-                  <Slider v-model="filterdays" range class="w-56 mt-2" :min="1" :max="1000" />
-                  <div class="w-full flex justify-between p-2 ">
-                    <span>{{ filterdays[0] }}</span>
-                    <span>{{ filterdays[1] }}</span>
-                  </div>
-                </template>
+              <template #body="{ data }">
+              {{ data.days }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                        <Slider v-model="filterModel.value" range class="m-4" :min="1" :max="1000"></Slider>
+                        <div class="flex items-center justify-between px-2">
+                            <span>{{ filterModel.value ? filterModel.value[0] : 0 }}</span>
+                            <span>{{ filterModel.value ? filterModel.value[1] : 100 }}</span>
+                        </div>
+                    </template>
             </Column>
-            <Column v-if="visibleColumns.includes('date')" field="date" sortable header="Date" :showFilterOperator="false" :showFilterMatchModes="false">
-                <template #body="{ data }">
+            <Column v-if="visibleColumns.includes('date')" field="date" header="Date" sortable :showFilterOperator="false" :showFilterMatchModes="false">
+              <template #body="{ data }">
                     {{ data.date }}
                 </template>
                 <template  #filter="{ filterModel }">
@@ -437,7 +445,10 @@
       @update:modelValue="applyDateFilter"
     />
                 </template>
+
             </Column>
+
+            
             <Column   v-if="visibleColumns.includes('action')"  field="action" header="Action" :showFilterOperator="false" :showFilterMatchModes="false">
                 <template #body="{ data }">
                     <Button icon="pi pi-eye" severity="info" @click="rightcanva(data)" class="p-0" variant="text" raised  />
@@ -456,47 +467,113 @@
         </Dialog>
 
         <Drawer v-model:visible="visibleRight" header="Stock Details" position="right" class="!w-full md:!w-80 lg:!w-[80rem]">
+          <hr>
           <div class="w-full p-1 flex flex-col h-full justify-between" >
+            <div class="w-full flex">
+              <div class="w-2/3 p-1" >
+                <Tabs value="0">
+              <TabList>
+                  <Tab value="0"><i class="pi pi-asterisk"></i> Activity</Tab>
+                  <Tab value="1"><i class="pi pi-envelope"></i> Emails</Tab>
+                  <Tab value="2"><i class="pi pi-comment"></i> Comments</Tab>
+                  <Tab value="3"><i class="pi pi-database"></i> Data</Tab>
+                  <Tab value="4"><i class="pi pi-list-check"></i> Tasks</Tab>
+                  <Tab value="5"><i class="pi pi-clipboard"></i> Notes</Tab>
+                  <Tab value="6"><i class="pi pi-paperclip"></i> Attachments</Tab>
+              </TabList>
+              <TabPanels>
+              <TabPanel value="0">
+                  
+              </TabPanel>
+              <TabPanel value="1">
+                
+              </TabPanel>
+              <TabPanel value="2">
+                  
+              </TabPanel>
+              <TabPanel value="3">
+                
+              </TabPanel>
+              <TabPanel value="4">
+                  
+              </TabPanel>
+              <TabPanel value="5">
+                
+              </TabPanel>
+    </TabPanels>
+</Tabs>
+
+
+              </div>
+              <div class="w-1/3 p-1" style="border-left: 1px solid gray;">
+                <p class="text-black-500 text-xl p-2 mt-3"><b>CRM-123H43</b></p>
+                <hr>
+
+                <div class="w-full flex justify-center items-center gap-3 p-2">
+                  <div class="rounded-full bg-slate-500 w-10 h-10"></div>
+                  <h1>{{ stockname }}</h1>
+                </div>
+                <hr>
+                <div class="w-full mt-2">
+                  
+                <Accordion value="0">
+            <AccordionPanel value="0">
+                <AccordionHeader>Details</AccordionHeader>
+                <AccordionContent>
+
+                  <div class="w-full p-1 flex">
+                    <div class="w-full p-1" ><span>Stock Name</span></div>
+                    <div class="w-full p-1" ><span>{{stockname}}</span></div>
+                  </div>
+                  <div class="w-full p-1 flex">
+                    <div class="w-full p-1" ><span>Date</span></div>
+                    <div class="w-full p-1" ><span>{{dateval}}</span></div>
+                  </div>
+                  <div class="w-full p-1 flex">
+                    <div class="w-full p-1" ><span>Quantity</span></div>
+                    <div class="w-full p-1" ><span>{{quant}}</span></div>
+                  </div>
+                  <div class="w-full p-1 flex">
+                    <div class="w-full p-1" ><span>AVG Price</span></div>
+                    <div class="w-full p-1" ><span>{{avg}}</span></div>
+                  </div>
+                  <div class="w-full p-1 flex">
+                    <div class="w-full p-1" ><span>LTP</span></div>
+                    <div class="w-full p-1" ><span>{{ltp}}</span></div>
+                  </div>
+                  <div class="w-full p-1 flex">
+                    <div class="w-full p-1" ><span>INV Amount</span></div>
+                    <div class="w-full p-1" ><span>{{invamt}}</span></div>
+                  </div>
+                  <div class="w-full p-1 flex">
+                    <div class="w-full p-1" ><span>MKT Value</span></div>
+                    <div class="w-full p-1" ><span>{{mktval}}</span></div>
+                  </div>
+                  <div class="w-full p-1 flex">
+                    <div class="w-full p-1" ><span>Over All</span></div>
+                    <div class="w-full p-1" ><span>{{overall}}</span></div>
+                  </div>
+                  <div class="w-full p-1 flex">
+                    <div class="w-full p-1" ><span>Days</span></div>
+                    <div class="w-full p-1" ><span>{{days}}</span></div>
+                  </div>
+                 
+                   
+                </AccordionContent>
+            </AccordionPanel>
+            </Accordion>
+                </div>
+              </div>
+
+            </div>
+
+
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-          <table class="min-w-full divide-y divide-gray-300">
-            <thead>
-              <tr>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">STOCK NAME</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">DATE</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">QUANTITY</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">AVERAGE PRICE</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">LTP</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">INVAMT</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">MKTVAL</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">OVERALL</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">DAYS</th>
-
-
-
-
-
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              <tr >
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{stockname}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{dateval}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{quant}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{avg}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ltp}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{invamt}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{mktval}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{overall}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{days}}</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="w-full p-1 flex justify-center gap-2" >
+                 </div>
+         <div class="w-full p-1 flex justify-center gap-2" >
             <Button label="Proceed" severity="success" @click="proceedfun" raised />
             <Button label="Cancel" severity="danger" @click="cancelfun" variant="outlined" />
-        </div>
+        </div> 
           </div>
         </Drawer>
         </div>
@@ -514,6 +591,18 @@
   import { useToast } from "primevue/usetoast";
 
 
+  import Tabs from 'primevue/tabs';
+import TabList from 'primevue/tablist';
+import Tab from 'primevue/tab';
+import TabPanels from 'primevue/tabpanels';
+import TabPanel from 'primevue/tabpanel';
+
+
+import Accordion from 'primevue/accordion';
+import AccordionPanel from 'primevue/accordionpanel';
+import AccordionHeader from 'primevue/accordionheader';
+import AccordionContent from 'primevue/accordioncontent';
+
 
   const loading=ref(true)
   const content=ref(false)
@@ -529,83 +618,32 @@
   const customers = ref([]);
   const activeFilter = ref('week');
   const visible = ref(false);
-  const filters = ref({});
+ 
   const toast = useToast();
 
-const minquant = ref(8);
-const maxquant = ref(100);
-const filterValue = ref([minquant.value, maxquant.value]);
 
+  const filters = ref();
 
-const minprice=ref(1)
-const maxprice=ref(1000)
-const filterprice=ref([minprice.value, maxprice.value])
-
-const minltp=ref(1)
-const maxltp=ref(1000)
-const filterltp=ref([minltp.value, minltp.value])
-
-const mininv=ref(1)
-const maxinv=ref(1000)
-const filterinv=ref([mininv.value, maxinv.value])
-
-const minmkt=ref(1000)
-const maxmkt=ref(50000)
-const filtermkt=ref([minmkt.value, maxmkt.value])
-
- const minoverall=ref(1)
- const maxoverall=ref(1000)
- const filteroverall=ref([minoverall.value, maxoverall.value])
-
- const mindays=ref(1)
- const maxdays=ref(1000)
- const filterdays=ref([mindays.value, maxdays.value])
-
- const datecol=ref()
+ 
 const initFilters = () => {
-  filters.value = {
-    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    stockname: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-    quantity: { 
-      operator: FilterOperator.AND, 
-      constraints: [{ value: [minquant.value, maxquant.value], matchMode: FilterMatchMode.BETWEEN }] 
-    },
-    avgprice: { 
-      operator: FilterOperator.AND, 
-      constraints: [{ value: [minprice.value, maxprice.value], matchMode: FilterMatchMode.BETWEEN }] 
-    },
+    filters.value = {
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        stockname: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+        quantity: { value: [0, 100], matchMode: FilterMatchMode.BETWEEN },
+        avgprice: { value: [0, 1000], matchMode: FilterMatchMode.BETWEEN },
+        ltp: { value: [0, 1000], matchMode: FilterMatchMode.BETWEEN },
+        invamt: { value: [0, 1000], matchMode: FilterMatchMode.BETWEEN },
+         mktval: { value: [0, 100000], matchMode: FilterMatchMode.BETWEEN },
+         overall: { value: [0, 1000], matchMode: FilterMatchMode.BETWEEN },
+         days: { value: [0, 1000], matchMode: FilterMatchMode.BETWEEN },
+         date: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
 
-    ltp: { 
-      operator: FilterOperator.AND, 
-      constraints: [{ value: [minltp.value, maxltp.value], matchMode: FilterMatchMode.BETWEEN }] 
-    },
 
-    invamt: { 
-      operator: FilterOperator.AND, 
-      constraints: [{ value: [mininv.value, maxinv.value], matchMode: FilterMatchMode.BETWEEN }] 
-    },
 
-    mktval: { 
-      operator: FilterOperator.AND, 
-      constraints: [{ value: [minmkt.value, maxmkt.value], matchMode: FilterMatchMode.BETWEEN }] 
-    },
-
-    overall: { 
-      operator: FilterOperator.AND, 
-      constraints: [{ value: [minoverall.value, maxoverall.value], matchMode: FilterMatchMode.BETWEEN }] 
-    },
-    
-    days: { 
-      operator: FilterOperator.AND, 
-      constraints: [{ value: [mindays.value, maxdays.value], matchMode: FilterMatchMode.BETWEEN }] 
-    },
-    
-    
-  
-  
-    date: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-  };
+    };
 };
+
+
 
 const applyDateFilter = () => {
   if (filters.value.date.constraints[0].value) {
@@ -620,35 +658,14 @@ const formatDate = (date) => {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 };
 
-watch(filterValue, (newValue) => {
-  filters.value.quantity.constraints[0].value = newValue;
-});
 
-watch(filterprice, (newValue) => {
-  filters.value.avgprice.constraints[0].value = newValue;
-});
-
-watch(filterltp, (newValue) => {
-  filters.value.avgprice.constraints[0].value = newValue;
-});
-
-watch(filterinv, (newValue) => {
-  filters.value.invamt.constraints[0].value = newValue;
-});
-
-watch(filtermkt, (newValue) => {
-  filters.value.mktval.constraints[0].value = newValue;
-});
-
-watch(filteroverall, (newValue) => {
-  filters.value.overall.constraints[0].value = newValue;
-});
-
-watch(filterdays, (newValue) => {
-  filters.value.days.constraints[0].value = newValue;
-});
 
 initFilters();
+
+
+
+
+
 
   const getdata = async () => {
     try {
@@ -825,9 +842,10 @@ const invamt=ref('')
 const mktval=ref('')
 const overall=ref('')
 const days=ref('')
+
 const rightcanva =(dataval)=>{
     visibleRight.value=true
-    stockname.value=dataval.stockname
+   stockname.value=dataval.stockname
     dateval.value=dataval.date
     quant.value=dataval.quantity
     avg.value=dataval.avgprice
@@ -839,11 +857,25 @@ const rightcanva =(dataval)=>{
 }
 
 const proceedfun=async()=>{
+  const formdata=new FormData()
+  formdata.append('stockname', stockname.value)
+  formdata.append('date', dateval.value)
+  formdata.append('quantity', quant.value)
+  formdata.append('averageprice', avg.value)
+  formdata.append('ltp', ltp.value)
+  formdata.append('invamt', invamt.value)
+  formdata.append('mktval', mktval.value)
+  formdata.append('overall', overall.value)
+  formdata.append('days', days.value)
+  const api='https://fakestoreapi.com/products'
   try {
-      const res = await fetch('/proceed.json');
+      const res = await fetch(api,{
+        method:'POST',
+        body:formdata
+      });
       if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
       const data = await res.json();
-      toast.add({ severity: 'success', summary: 'Success Message', detail: data[0].proceed, life: 3000 });
+      toast.add({ severity: 'success', summary: 'Success Message', detail: data.id, life: 3000 });
     } catch (error) {
       console.error("Error:", error.message);
     }
@@ -852,12 +884,25 @@ const proceedfun=async()=>{
 }
 
 const cancelfun=async()=>{
-  
+  const formdata=new FormData()
+  formdata.append('stockname', stockname.value)
+  formdata.append('date', dateval.value)
+  formdata.append('quantity', quant.value)
+  formdata.append('averageprice', avg.value)
+  formdata.append('ltp', ltp.value)
+  formdata.append('invamt', invamt.value)
+  formdata.append('mktval', mktval.value)
+  formdata.append('overall', overall.value)
+  formdata.append('days', days.value)
+  const api='https://fakestoreapi.com/products'
   try {
-      const res = await fetch('/proceed.json');
+      const res = await fetch(api,{
+        method:'POST',
+        body:formdata
+      });
       if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
       const data = await res.json();
-      toast.add({ severity: 'error', summary: 'Cancel Message', detail: data[0].cancel, life: 3000 });
+      toast.add({ severity: 'error', summary: 'Cancel Message', detail: data.id, life: 3000 });
     } catch (error) {
       console.error("Error:", error.message);
     }
